@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<style>
+    .titulo{
+        display: flex;
+
+    }
+    div{
+        font-size: 100px;
+        font-family: 'Courier New', Courier, monospace;
+        flex-basis: 10%;
+
+    }
+    /* div:hover {
+        
+        width: 200px;
+        height: 200px;  
+      } */
+ /*   @keyframes mynewmove {
+        from {top: 0px;}
+        to {top: 200px;}
+      } */
+body{
+    background-color: white;
+    text-align: center;
+}
+.letter{
+    font-size: 90px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    display: inline-block;
+    color: #999;
+    transition: all ease-in-out 250ms;
+}
+.letter.active{
+    transform: scale(1.5);
+    
+    color: green;
+    transform: rotate(360deg);
+}
+
+</style>
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="titulo" >
+        <div class="l1">P</div>
+        <div class="l2">A</div>
+        <div class="l3">T</div>
+        <div class="l4">R</div>
+        <div class="l5">I</div>
+        <div class="l6">C</div>
+        <div class="l7">&nbsp </div>
+        <div class="l8">Q</div>
+        <div class="l9">U</div>
+        <div class="l10">A</div>
+        <div class="l11">A</div>
+        <div class="l12">S</div>
+        <div class="l13"> </div>
+    </div>
+
+    <h1>Final Proyect</h1>
+
+<script>
+    const letra = document.querySelector(".titulo")
+        letra.addEventListener("mouseover", function( event ) {
+            // highlight the mouseover target
+            event.target.style.color = "orange";
+            event.target.style.fontSize = '200px';
+            event.target.style.textShadow = "5px 5px 1px #ff0000, 10px 10px 1px #0000ff";
+            event.target.style.opacity = "0.5";
+           /* event.target.style.animation = "mynewmove 4s 2";*/
+            event.target.style.transition = "all 2s";
+          
+            // reset the color after a short delay
+            setTimeout(function() {
+              event.target.style.color = "";
+              event.target.style.fontSize = '100px'
+              event.target.style.textShadow = 'none'
+              event.target.style.opacity = "1";
+              event.target.style.transition = "none";
+            }, 4000);
+          }, false);
+
+    const h1 = document.querySelector("h1")
+    const letters = h1.innerText.split('')
+    let html = ""
+    letters.forEach(letter => {
+        let classes = ''
+        if(letter !== ' '){
+            classes = 'letter js-letter'
+        }
+        html = html + `<span class='${classes}'>${letter}</span>`
+    })
+    h1.innerHTML = html
+    const jsLetters = document.querySelectorAll(".js-letter")
+    jsLetters.forEach( mode => {
+        mode.addEventListener("mouseover", function(event){
+            this.classList.add("active")
+        })
+        mode.addEventListener("mouseout", function(event){
+            this.classList.remove("active")
+
+        })
+    } )
+
+        </script>
+
+
+</body>
+</html>
